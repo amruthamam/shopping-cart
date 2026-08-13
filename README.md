@@ -1,32 +1,56 @@
-# Shopping Cart — Vegetables & Fruits
+# FreshBasket — Full-Stack E-Commerce App
 
-A simple Vite + React + TypeScript starter app that showcases a small grocery shop for vegetables and fruits (Blinkit-like demo). Use this as a portfolio project or extend it into a full storefront.
+A full-stack e-commerce project built with React, TypeScript, Node.js, Express, MongoDB, and JWT authentication.
 
-Demo
-- Local: run the app with `npm install` and `npm run dev` and visit http://localhost:5173
+## Features
+- User registration and login
+- Product listing and search
+- Product categories and filters
+- Product detail view
+- Wishlist
+- Shopping cart
+- Checkout flow
+- Order history
+- Admin dashboard
+- Product CRUD
+- Responsive design
 
-Tech stack
-- React + TypeScript
-- Vite
+## Tech Stack
+- Frontend: React + TypeScript + Vite
+- Backend: Node.js + Express
+- Database: MongoDB + Mongoose
+- Auth: JWT
 
-Features (MVP)
-- Product listing (vegetables & fruits)
-- Add to cart, adjust quantity, and remove
-- Cart total and simple checkout placeholder
+## Project Structure
+- src/ — frontend React app
+- server/ — Express API and MongoDB models
 
-Getting started (local)
-1. git clone https://github.com/amruthamam/shopping-cart
-2. cd shopping-cart
-3. npm install
-4. npm run dev
+## Getting Started
 
-Project structure
-- src/ — React source files
-- public/ — static assets
-- .github/workflows/ci.yml — basic CI (install & build)
+1. Install dependencies:
+   npm install
 
-Contributing
-- Open issues for features or bugs. See CONTRIBUTING.md for guidelines (not included yet).
+2. Create a .env file based on .env.example
+   PORT=5000
+   MONGO_URI=mongodb://127.0.0.1:27017/freshbasket
+   JWT_SECRET=freshbasket-secret
 
-License
-- MIT © amruthamam
+3. Start the app:
+   npm run dev
+
+4. Frontend URL:
+   http://localhost:5173
+
+5. API URL:
+   http://localhost:5000/api
+
+## API Routes
+- POST /api/auth/register
+- POST /api/auth/login
+- GET /api/products
+- GET /api/products/:id
+- POST /api/orders
+- GET /api/orders/my-orders
+
+## Notes
+This project is designed as a strong portfolio app and can be extended with a proper admin dashboard, payments, and deployment configuration.

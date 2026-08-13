@@ -1,54 +1,98 @@
-import React from 'react'
-import { Product } from '../App'
+import React from 'react';
+import { Product } from '../types';
+
+type CartItem = Product & { id: string; qty: number };
 
 export default function Cart({
-  products,
-  cart,
+  items,
+  subtotal,
+  deliveryFee,
+  discount,
+  total,
+  savings,
   onUpdate,
-  onClear
+  onClear,
+  onCheckout
 }: {
-  products: Product[]
-  cart: Record<string, number>
+  items: CartItem[]
+  subtotal: number
+  deliveryFee: number
+  discount: number
+  total: number
+  savings: number
   onUpdate: (id: string, qty: number) => void
   onClear: () => void
+  onCheckout: () => void
 }) {
-  const items = Object.entries(cart)
-  const total = items.reduce((sum, [id, qty]) => {
-    const p = products.find((x) => x.id === id)!
-    return sum + p.price * qty
-  }, 0)
-
   return (
-    <div>
-      <h2>Your Cart</h2>
-      {items.length === 0 ? (
-        <p>Cart is empty</p>
-      ) : (
+    <div className="cart-box">
+      <div className="cart-header">
         <div>
-          <ul>
-            {items.map(([id, qty]) => {
-              const p = products.find((x) => x.id === id)!
-              return (
-                <li key={id} className="cart-item">
-                  <div>
-                    <strong>{p.name}</strong>
-                    <div className="muted">₹{p.price} / {p.unit}</div>
-                  </div>
-                  <div className="qty">
-                    <button onClick={() => onUpdate(id, qty - 1)}>-</button>
-                    <span>{qty}</span>
-                    <button onClick={() => onUpdate(id, qty + 1)}>+</button>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-          <div className="total">Total: ₹{total}</div>
-          <div className="cart-actions">
-            <button className="btn" onClick={onClear}>Clear</button>
-            <button className="btn primary" onClick={() => alert('Checkout placeholder')}>Checkout</button>
-          </div>
+          <p className="eyebrow">Basket</p>
+          <h2>Your cart</h2>
         </div>
+        {items.length > 0 && (
+          <button type="button" className="text-button" onClick={onClear}>
+            Clear all
+          </button>
+        )}
+      </div>
+
+      {items.length === 0 ? (
+        <div className="empty-cart">
+          <div className="empty-icon">🛒</div>
+          <h3>Your basket is empty</h3>
+          <p>Add fresh essentials to get started.</p>
+        </div>
+      ) : (
+        <>
+          <div className="cart-items">
+            {items.map((item) => (
+              <div key={item.id} className="cart-item-row">
+                <div className="cart-item-main">
+                  <div className="cart-emoji">{item.emoji}</div>
+                  <div>
+                    <strong>{item.name}</strong>
+                    <div className="muted">₹{item.price} / {item.unit}</div>
+                  </div>
+                </div>
+
+                <div className="qty-adjuster">
+                  <button type="button" onClick={() => onUpdate(item.id, item.qty - 1)}>-</button>
+                  <span>{item.qty}</span>
+                  <button type="button" onClick={() => onUpdate(item.id, item.qty + 1)}>+</button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="summary-box">
+            <div className="summary-row">
+              <span>Subtotal</span>
+              <strong>₹{subtotal}</strong>
+            </div>
+            <div className="summary-row">
+              <span>Delivery</span>
+              <strong>{deliveryFee === 0 ? 'Free' : `₹${deliveryFee}`}</strong>
+            </div>
+            <div className="summary-row">
+              <span>Discount</span>
+              <strong>-₹{discount.toFixed(0)}</strong>
+            </div>
+            <div className="summary-row total-row">
+              <span>Total</span>
+              <strong>₹{total}</strong>
+            </div>
+            <div className="summary-row savings-row">
+              <span>You saved</span>
+              <strong>₹{savings.toFixed(0)}</strong>
+            </div>
+          </div>
+
+          <button type="button" className="checkout-btn" onClick={onCheckout}>
+            Proceed to checkout
+          </button>
+        </>
       )}
     </div>
   )
