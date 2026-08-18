@@ -13,7 +13,7 @@ export type Product = {
   emoji?: string;
   description: string;
   isOrganic?: boolean;
-  image?: string;
+  image: string;
 };
 
 export type User = {

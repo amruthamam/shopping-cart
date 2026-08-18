@@ -23,7 +23,13 @@ export default function ProductCard({
         </button>
       </div>
 
-      <div className="product-emoji" aria-hidden="true">{product.emoji}</div>
+      <div className="product-image">
+  <img
+    src={product.image}
+    alt={product.name}
+    loading="lazy"
+  />
+</div>
 
       <div className="product-copy">
         <h3>{product.name}</h3>
