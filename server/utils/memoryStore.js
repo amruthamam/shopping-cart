@@ -8,7 +8,7 @@ const seedProducts = [
     price: 40,
     category: 'Vegetables',
     stock: 30,
-    image: '/products/tomatoes.jpg',
+    image: 'https://shopping-cart-amrutha18.vercel.app/products/tomatoes.jpg',
     rating: 4.8,
     isFeatured: true,
     isOrganic: true
@@ -20,7 +20,7 @@ const seedProducts = [
     price: 62,
     category: 'Fruits',
     stock: 45,
-    image: '/products/bananas.jpg',
+    image: 'https://shopping-cart-amrutha18.vercel.app/products/bananas.jpg',
     rating: 4.9,
     isFeatured: true,
     isOrganic: true
@@ -32,7 +32,7 @@ const seedProducts = [
     price: 48,
     category: 'Staples',
     stock: 20,
-    image: '/products/brown-rice.jpg',
+    image: 'https://shopping-cart-amrutha18.vercel.app/products/brown-rice.jpg',
     rating: 4.7,
     isFeatured: false,
     isOrganic: false
@@ -44,7 +44,7 @@ const seedProducts = [
     price: 52,
     category: 'Dairy',
     stock: 18,
-    image: '/products/milk.jpg',
+    image: 'https://shopping-cart-amrutha18.vercel.app/products/milk.jpg',
     rating: 4.6,
     isFeatured: false,
     isOrganic: false
@@ -56,7 +56,7 @@ const seedProducts = [
     price: 18,
     category: 'Vegetables',
     stock: 25,
-    image: '/products/spinach.jpg',
+    image: 'https://shopping-cart-amrutha18.vercel.app/products/spinach.jpg',
     rating: 4.8,
     isFeatured: true,
     isOrganic: true
@@ -68,7 +68,7 @@ const seedProducts = [
     price: 130,
     category: 'Fruits',
     stock: 15,
-    image: '/products/apples.jpg',
+    image: 'https://shopping-cart-amrutha18.vercel.app/products/apples.jpg',
     rating: 4.8,
     isFeatured: true,
     isOrganic: false
