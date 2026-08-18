@@ -74,3 +74,55 @@ const seedProducts = [
     isOrganic: false
   }
 ];
+
+async function createMemoryStore() {
+  return {
+    users: [],
+    products: [...seedProducts],
+    orders: [],
+
+    async findUserByEmail(email) {
+      return this.users.find(u => u.email === email);
+    },
+
+    async createUser(userData) {
+      const hashedPassword = await bcrypt.hash(userData.password, 10);
+      const user = {
+        id: Date.now().toString(),
+        ...userData,
+        password: hashedPassword
+      };
+      this.users.push(user);
+      return user;
+    },
+
+    async verifyPassword(password, hashedPassword) {
+      return bcrypt.compare(password, hashedPassword);
+    },
+
+    getAllProducts() {
+      return this.products;
+    },
+
+    getProductsByCategory(category) {
+      if (category === 'All') return this.products;
+      return this.products.filter(p => p.category === category);
+    },
+
+    createOrder(orderData) {
+      const order = {
+        id: Date.now().toString(),
+        ...orderData,
+        createdAt: new Date().toISOString()
+      };
+      this.orders.push(order);
+      return order;
+    },
+
+    getOrdersByUserId(userId) {
+      return this.orders.filter(o => o.userId === userId);
+    }
+  };
+}
+
+module.exports = { createMemoryStore };
