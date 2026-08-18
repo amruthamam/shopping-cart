@@ -8,7 +8,7 @@ const seedProducts = [
     price: 40,
     category: 'Vegetables',
     stock: 30,
-    image: '',
+    image: '/products/tomatoes.jpg',
     rating: 4.8,
     isFeatured: true,
     isOrganic: true
@@ -20,7 +20,7 @@ const seedProducts = [
     price: 62,
     category: 'Fruits',
     stock: 45,
-    image: '',
+    image: '/products/bananas.jpg',
     rating: 4.9,
     isFeatured: true,
     isOrganic: true
@@ -32,7 +32,7 @@ const seedProducts = [
     price: 48,
     category: 'Staples',
     stock: 20,
-    image: '',
+    image: '/products/brown-rice.jpg',
     rating: 4.7,
     isFeatured: false,
     isOrganic: false
@@ -44,7 +44,7 @@ const seedProducts = [
     price: 52,
     category: 'Dairy',
     stock: 18,
-    image: '',
+    image: '/products/milk.jpg',
     rating: 4.6,
     isFeatured: false,
     isOrganic: false
@@ -56,7 +56,7 @@ const seedProducts = [
     price: 18,
     category: 'Vegetables',
     stock: 25,
-    image: '',
+    image: '/products/spinach.jpg',
     rating: 4.8,
     isFeatured: true,
     isOrganic: true
@@ -68,30 +68,9 @@ const seedProducts = [
     price: 130,
     category: 'Fruits',
     stock: 15,
-    image: '',
+    image: '/products/apples.jpg',
     rating: 4.8,
     isFeatured: true,
     isOrganic: false
   }
 ];
-
-const createMemoryStore = async () => {
-  const adminPassword = await bcrypt.hash('admin123', 10);
-
-  return {
-    users: [
-      {
-        _id: 'user-admin',
-        id: 'user-admin',
-        name: 'Admin User',
-        email: 'admin@freshbasket.com',
-        password: adminPassword,
-        role: 'admin'
-      }
-    ],
-    products: [...seedProducts],
-    orders: []
-  };
-};
-
-module.exports = { createMemoryStore };
